@@ -1,16 +1,15 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import './Layout.css';
-
+import React, { useEffect, useState } from "react";
+import { Route, Link, Routes, useParams } from "react-router-dom";
 import Header from "./Header";
-import Home from "./home/Home";
-import Study from "./decks-study/Study";
-import CreateDeckScreen from "./decks-new/CreateDeckScreen";
-import DeckScreen from "./decks/DeckScreen";
-import EditDeckScreen from "./decks-edit/EditDeckScreen";
-import AddCardScreen from "./decks-cards/new/AddCardScreen";
-import EditCardScreen from "./decks-cards/edit/EditCardScreen";
 import NotFound from "./NotFound";
+import Home from "./Home";
+import StudyDeck from "./StudyDeck";
+import CreateDeck from "./CreateDeck";
+import ViewDeck from "./ViewDeck";
+import EditDeck from "./EditDeck";
+import AddCard from "./AddCard";
+import EditCard from "./EditCard";
+import { listDecks } from "../utils/api";
 
 function Layout() {
   return (
