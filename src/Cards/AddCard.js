@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck, createCard } from "../utils/api";
-import CardForm from "./CardForm";
+import CardForm from "../Layout/CardForm";
 
 function AddCard() {
   const mountedRef = useRef(false);
@@ -63,7 +62,7 @@ function AddCard() {
   };
 
   return (
-    <>
+    <div>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -88,7 +87,7 @@ function AddCard() {
         newCardData={newCardData}
         deckId={deckId}
       />  
-    </>
+    </div>
   );
 }
 
