@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck, createCard } from "../utils/api";
-import CardForm from "../Layout/CardForm";
+import CardForm from "./CardForm";
 
 function AddCard() {
   const mountedRef = useRef(false);
