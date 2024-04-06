@@ -1,52 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom"
+function CardForm({submitHandler, changeHandler, formData}) {
+    const navigate = useNavigate()
+    const [placeHolder, setPlaceHolder] = useState({...formData})
+    
+    if (!placeHolder.front && !placeHolder.back) {
+        setPlaceHolder({
+            front: "Front side of card",
+            back: "Back side of card"
+        })
+    }
+    const goToDeck = () => {
+        navigate(-1);
+    }
+        return (
+            <form onSubmit={submitHandler}>
+                <label htmlFor="front" className="d-flex flex-column" >
+                    Front
+                    <textarea
+                        id="front"
+                        type="text"
+                        name="front"
+                        onChange={changeHandler}
+                        value={formData.front}
+                        placeholder={placeHolder.front}
+                        required
+                    />
+                </label>
 
-
-function CardForm({ deckId, newCardData, changeHandler, submitHandler }) {
-    const history = useHistory();
-    return (
-    <form onSubmit={submitHandler}>
-        <div className="form-group">
-        <label htmlFor="front">Front</label>
-        <textarea
-            className="form-control"
-            id="front"
-            name="front"
-            rows="5"
-            placeholder="Front side of card"
-            onChange={changeHandler}
-            value={newCardData.front}
-            required
-        ></textarea>
-    </div>
-    <div className="form-group">
-        <label htmlFor="back">Back</label>
-        <textarea
-            className="form-control"
-            id="back"
-            name="back"
-            rows="5"
-            placeholder="Back side of card"
-            onChange={changeHandler}
-            value={newCardData.back}
-            required
-        ></textarea>
-    </div>
-    <Link to={`/decks/${deckId}`} className="mr-2">
-        <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => history.push(`/decks/${deckId}`)}
-        >
-        Done
-        </button>
-    </Link>
-    <button type="submit" className="btn btn-primary">
-        Save
-    </button>
-    </form>
-);
+                <label htmlFor="back" className="d-flex flex-column">
+                    Back
+                    <textarea
+                        id="back"
+                        type="text"
+                        name="back"
+                        onChange={changeHandler}
+                        value={formData.back}
+                        placeholder={placeHolder.back}
+                        required
+                    />
+                </label>  
+                <button className="btn btn-secondary" onClick={goToDeck}>Cancel</button>
+                <button className="btn btn-primary">Submit</button>                   
+            </form>
+        )
+    
+    
+    
 }
 
-export default CardForm;
+export default CardForm
